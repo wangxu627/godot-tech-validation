@@ -1,0 +1,41 @@
+[gd_scene format=3 uid="uid://bheww8c6no74a"]
+
+[ext_resource type="Script" uid="uid://bck3841vxhq0p" path="res://home/Home2.gd" id="1_2f37q"]
+[ext_resource type="PackedScene" uid="uid://dcj6ajbncha4w" path="res://home/BottomBar.tscn" id="2_ygr3d"]
+
+[node name="Home2" type="Control" unique_id=364552860]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_2f37q")
+
+[node name="Backdrop" type="ColorRect" parent="." unique_id=1734088071]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.018, 0.022, 0.032, 1)
+
+[node name="MainContent" type="Control" parent="." unique_id=1088539138]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 0.91
+mouse_filter = 2
+
+[node name="PageHost" type="Control" parent="MainContent" unique_id=2041531356]
+anchors_preset = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+
+[node name="BottomBar" parent="." unique_id=927230081 instance=ExtResource("2_ygr3d")]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.91
+anchor_right = 1.0
+anchor_bottom = 1.0
+selection_mode = 16
+background_color = Color(0.055, 0.12, 0.105, 1)

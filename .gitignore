@@ -1,0 +1,9 @@
+# Godot 编辑器缓存与本地状态（不入库）
+.godot/
+
+# WorkBuddy 工作区数据（不入库）
+.workbuddy/
+
+# 系统文件
+.DS_Store
+Thumbs.db

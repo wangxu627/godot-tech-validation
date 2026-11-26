@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://home/DemoPage.gd" id="1_demo"]
+
+[node name="DemoPage" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_demo")
+page_title = "示例页面"
+subtitle = "用于验证页面切换与入场动画"
+badge_text = "PAGE"
+background_color = Color(0.06, 0.12, 0.22, 1)
+accent_color = Color(0.2, 0.72, 1, 1)
+enter_style = 0
+
+[node name="Background" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.06, 0.12, 0.22, 1)
+
+[node name="Glow" type="ColorRect" parent="."]
+anchor_left = 0.08
+anchor_top = 0.12
+anchor_right = 0.92
+anchor_bottom = 0.78
+mouse_filter = 2
+color = Color(0.2, 0.72, 1, 0.16)
+
+[node name="Center" type="VBoxContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -300.0
+offset_top = -170.0
+offset_right = 300.0
+offset_bottom = 170.0
+alignment = 1
+theme_override_constants/separation = 22
+
+[node name="Badge" type="Label" parent="Center"]
+theme_override_font_sizes/font_size = 22
+modulate = Color(0.7, 0.86, 1, 1)
+text = "PAGE"
+horizontal_alignment = 1
+
+[node name="Title" type="Label" parent="Center"]
+theme_override_font_sizes/font_size = 58
+text = "示例页面"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Center"]
+theme_override_font_sizes/font_size = 26
+modulate = Color(0.78, 0.84, 0.92, 1)
+text = "用于验证页面切换与入场动画"
+horizontal_alignment = 1
+
+[node name="Hint" type="Label" parent="Center"]
+theme_override_font_sizes/font_size = 20
+modulate = Color(0.56, 0.65, 0.76, 1)
+text = "动画：FADE"
+horizontal_alignment = 1

@@ -1,0 +1,72 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://addons/slot_number_reel/SlotNumberReel.gd" id="1_script"]
+[ext_resource type="Shader" path="res://addons/slot_number_reel/reel_blur.gdshader" id="2_shader"]
+[ext_resource type="Texture2D" path="res://assets/digits.png" id="3_digits"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.045, 0.055, 0.08, 0.97)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.92, 0.68, 0.2, 0.95)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_reel"]
+shader = ExtResource("2_shader")
+shader_parameters = {
+"blur_px": 0.0,
+"scroll_y_px": 0.0,
+"strip_height_px": 1290.0,
+"view_height_px": 129.0
+}
+
+[node name="SlotNumberReel" type="Control"]
+custom_minimum_size = Vector2(120, 150)
+layout_mode = 3
+script = ExtResource("1_script")
+atlas_texture = ExtResource("3_digits")
+cell_size = Vector2(102, 129)
+columns = 4
+min_turns = 3
+spin_speed = 1500.0
+max_blur_px = 26.0
+blur_speed_reference = 1800.0
+target_number = 0
+
+[node name="Background" type="Panel" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="ReelTexture" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_reel")
+offset_left = 9.0
+offset_top = 10.0
+offset_right = 111.0
+offset_bottom = 139.0
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 0
+
+[node name="TopShade" type="ColorRect" parent="."]
+anchor_right = 1.0
+offset_top = 3.0
+offset_bottom = 21.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.22)
+
+[node name="BottomShade" type="ColorRect" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -21.0
+offset_bottom = -3.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0.22)

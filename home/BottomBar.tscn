@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://dcj6ajbncha4w"]
+
+[ext_resource type="Script" uid="uid://canmg5wtmgk07" path="res://home/BottomBar.gd" id="1_bottom_bar"]
+
+[node name="BottomBar" type="Container" unique_id=859549039]
+custom_minimum_size = Vector2(0, 120)
+script = ExtResource("1_bottom_bar")
+selection_mode = 4

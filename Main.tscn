@@ -1,0 +1,92 @@
+[gd_scene load_steps=4 format=3]
+
+[ext_resource type="Script" path="res://Main.gd" id="1_main"]
+[ext_resource type="PackedScene" path="res://addons/slot_number_reel/SlotNumberReel.tscn" id="2_reel"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_panel"]
+bg_color = Color(0.055, 0.065, 0.09, 0.96)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.18, 0.22, 0.3, 1)
+corner_radius_top_left = 18
+corner_radius_top_right = 18
+corner_radius_bottom_right = 18
+corner_radius_bottom_left = 18
+content_margin_left = 28
+content_margin_top = 26
+content_margin_right = 28
+content_margin_bottom = 26
+
+[node name="Main" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource("1_main")
+
+[node name="Backdrop" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0.022, 0.028, 0.042, 1)
+
+[node name="Panel" type="PanelContainer" parent="."]
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = 30.0
+offset_right = -36.0
+offset_bottom = -30.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_panel")
+
+[node name="VBox" type="VBoxContainer" parent="Panel"]
+theme_override_constants/separation = 18
+
+[node name="Title" type="Label" parent="Panel/VBox"]
+theme_override_font_sizes/font_size = 28
+text = "Godot 技术验证 · 老虎机数字滚轮"
+horizontal_alignment = 1
+
+[node name="Subtitle" type="Label" parent="Panel/VBox"]
+theme_override_font_sizes/font_size = 15
+modulate = Color(0.62, 0.68, 0.78, 1)
+text = "使用给定数字图集切出 0~9，支持指定目标数字与旋转模糊"
+horizontal_alignment = 1
+
+[node name="Reels" type="HBoxContainer" parent="Panel/VBox"]
+alignment = 1
+theme_override_constants/separation = 20
+
+[node name="Reel1" parent="Panel/VBox/Reels" instance=ExtResource("2_reel")]
+[node name="Reel2" parent="Panel/VBox/Reels" instance=ExtResource("2_reel")]
+[node name="Reel3" parent="Panel/VBox/Reels" instance=ExtResource("2_reel")]
+
+[node name="Controls" type="HBoxContainer" parent="Panel/VBox"]
+alignment = 1
+theme_override_constants/separation = 12
+
+[node name="TargetEdit" type="LineEdit" parent="Panel/VBox/Controls"]
+custom_minimum_size = Vector2(200, 44)
+max_length = 12
+alignment = 1
+placeholder_text = "例如 742"
+text = "742"
+
+[node name="SpinButton" type="Button" parent="Panel/VBox/Controls"]
+custom_minimum_size = Vector2(140, 44)
+text = "开始旋转"
+
+[node name="StatusLabel" type="Label" parent="Panel/VBox"]
+theme_override_font_sizes/font_size = 16
+text = "准备就绪"
+horizontal_alignment = 1
+
+[node name="HintLabel" type="Label" parent="Panel/VBox"]
+theme_override_font_sizes/font_size = 14
+modulate = Color(0.58, 0.64, 0.74, 1)
+text = "组件 API：spin_to(0~9) 指定目标数字，set_value(0~9) 立即显示；旋转时自动叠加纵向运动模糊。"
+horizontal_alignment = 1
